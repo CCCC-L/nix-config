@@ -22,11 +22,12 @@ in {
       imports = [
         ./disko.nix
         ./hardware-configuration.nix
+        ./impermanence.nix
       ] ++ modules.nixosModules;
 
       networking.hostName = name;
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
+
+      zramSwap.memoryPercent = 50;  # 设置zram大小为内存的50%
     }];
   };
 }

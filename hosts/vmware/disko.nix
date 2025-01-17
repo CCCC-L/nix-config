@@ -26,12 +26,8 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ];
                 subvolumes = {
-                  "/root" = {
-                    mountpoint = "/";
-                    mountOptions = [ "compress=zstd" ];
-                  };
-                  "/home" = {
-                    mountpoint = "/home";
+                  "/persistent" = {
+                    mountpoint = "/persistent";
                     mountOptions = [ "compress=zstd" ];
                   };
                   "/nix" = {
@@ -52,7 +48,14 @@
         };
       };
     };
+
+    nodev."/" = {
+      fsType = "tmpfs";
+      mountOptions = [ "mode=755" ];
+    };
   };
+
+  fileSystems."/persistent".neededForBoot = true;
 
   # 或许可能以后不让disko自动挂载分区而是只划分分区
   # disko.enableConfig = false;

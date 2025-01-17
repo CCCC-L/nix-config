@@ -16,4 +16,9 @@
     };
     upower.enable = true;
   };
+
+  # 启动zram
+  zramSwap = {
+    enable = true;
+  };
 }
