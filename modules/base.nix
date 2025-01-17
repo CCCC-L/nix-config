@@ -23,7 +23,7 @@ in {
   nix.settings = {
     # 启动Flakes
     experimental-features = ["nix-command" "flakes"];
-    # 
+
     trusted-users = [myvars.username];
 
     substituters = [

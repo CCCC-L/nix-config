@@ -13,6 +13,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -38,16 +42,12 @@
 
       args = { inherit inputs lib mylib myvars genSpecialArgs; };
 
-      # pkgs = nixpkgs.legacyPackages.${system};
-
       mkHost = hostname: import ./hosts/${hostname} (args // {system = "x86_64-linux";});
 
       hostNames = builtins.attrNames (builtins.readDir ./hosts);
 
     in {
       nixosConfigurations = lib.attrsets.mergeAttrsList (map mkHost hostNames);
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     };
 }
 

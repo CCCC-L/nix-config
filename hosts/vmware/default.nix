@@ -11,7 +11,7 @@
     ];
   };
 
-  inherit (inputs) nixpkgs ;
+  inherit (inputs) nixpkgs;
 
 in {
   ${name} = nixpkgs.lib.nixosSystem {
@@ -20,12 +20,13 @@ in {
 
     modules = [{
       imports = [
+        ./disko.nix
         ./hardware-configuration.nix
       ] ++ modules.nixosModules;
 
+      networking.hostName = name;
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
-      networking.hostName = name;
     }];
   };
 }
