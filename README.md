@@ -11,7 +11,7 @@ nix run github:nix-community/nixos-anywhere -- --flake .#vmware root@192.168.61.
 ### 最小化安装
 当内存小于8GB 时建议分区最小化安装后再使用更新配置
 ```bash
-nixos-rebuild switch --flake .#vmware
+nixos-rebuild switch --flake .#vmware --show-trace  --verbose
 ```
 > 分区安装可参考 https://nixos-cn.org/tutorials/installation/VirtualMachine.html#%E5%88%86%E5%8C%BA%E4%B8%8E%E6%A0%BC%E5%BC%8F%E5%8C%96
 
@@ -35,4 +35,24 @@ nix --extra-experimental-features "nix-command flakes" run 'github:nix-community
 重新编译则执行
 ``` bash
 nixos-rebuild switch --flake .#vmware --show-trace  --verbose
+```
+
+## 查看最后生成的配置
+### nix eval
+操作少，但是得到的数据是压缩在一块的。
+```bash
+# 查看全部的
+nix eval .#nixosConfigurations.vmware.config
+# 查看指定部分的
+nix eval .#nixosConfigurations.vmware.config.fileSystems
+# 以Json方式输出（有些时候会失败
+nix eval --json .#nixosConfigurations.vmware.config.fileSystems
+```
+
+### nix p
+更好的体验
+```bash
+nix repl
+:lf .
+:p nixosConfigurations.vmware.config.fileSystems
 ```
