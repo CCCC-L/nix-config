@@ -1,6 +1,6 @@
 ## 安装
 ### anywhere
-当有一个Nixos主机且内存大于等于2GB时建议`nixos-anywhere`安装
+当有一台Nixos主机且内存大于等于2GB时建议`nixos-anywhere`安装
 ``` bash
 nix run github:nix-community/nixos-anywhere -- --flake .#vmware root@192.168.61.132
 
@@ -32,4 +32,7 @@ nix --extra-experimental-features "nix-command flakes" run 'github:nix-community
 ```
 
 ## 重新编译
-重新编译则执行 `nixos-rebuild switch --flake .#vmware`
+重新编译则执行
+``` bash
+nixos-rebuild switch --flake .#vmware --show-trace  --verbose
+```

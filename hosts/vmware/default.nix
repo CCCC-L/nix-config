@@ -22,12 +22,12 @@ in {
       imports = [
         ./disko.nix
         ./hardware-configuration.nix
-        ./impermanence.nix
       ] ++ modules.nixosModules;
 
       networking.hostName = name;
-
       zramSwap.memoryPercent = 50;  # 设置zram大小为内存的50%
+
+      base'.impermanence.enable = true;
     }];
   };
 }
