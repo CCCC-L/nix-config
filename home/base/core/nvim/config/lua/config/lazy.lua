@@ -16,7 +16,7 @@ require("lazy").setup({
     enabled = false,
     notify = false,
   },
-  install = { colorscheme = { "vscode" } },
+  install = { colorscheme = { "catppuccin" } },
   performance = {
     rtp = {
       -- 禁用一些默认的插件

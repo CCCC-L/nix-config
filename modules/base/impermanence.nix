@@ -71,6 +71,7 @@ in {
             }
             
             ".config/nix-config"
+            ".local/share/nvim"
           ] ++ cfg.user.directories;
 
           files = cfg.user.files;

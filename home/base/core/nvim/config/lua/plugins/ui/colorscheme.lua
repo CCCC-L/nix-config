@@ -1,23 +1,18 @@
 return {
-  "Mofiqul/vscode.nvim",
+  "catppuccin/nvim",
   lazy = false,
   priority = 1000,
-  opts = {
-    style = "light",
-    color_overrides = {
-      vscLineNumber = "#6E8BB6",
-      vscLightBlue = "#19278C",
-      vscOrange = "#AE3131",
-    },
-    group_overrides = {
-      -- 基本语法高亮组
-      ["@keyword"] = { fg = "#AF00DB" },
-      ["@variable.member"] = { fg = "#33869F" },
-      ["@punctuation.bracket"] = {fg = "#459E45"},
-    },
-  },
-  init = function()
-    vim.cmd.colorscheme("vscode")
+
+  config = function()
+    require("catppuccin").setup({
+      -- 背景透明
+      transparent_background = true,
+      term_colors = true,
+    })
+
+    -- 改变光标颜色，防止在白色主题下看不见
+    vim.opt.guicursor = "n-v-c:Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20,o:hor50"
+
+    vim.cmd([[colorscheme catppuccin]])
   end,
 }
-

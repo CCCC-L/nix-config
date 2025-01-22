@@ -1,4 +1,4 @@
 return {
-  { import = "plugins.editor-enhance" },
+  { import = "plugins.editor" },
   { import = "plugins.ui" },
 }
