@@ -59,5 +59,5 @@ nix repl
 
 ## 临时安装一些软件
 ```bash
-nix shell -p gcc gnumake binutils
+nix-shell -p gcc gnumake binutils
 ```

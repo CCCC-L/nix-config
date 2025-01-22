@@ -1,7 +1,7 @@
 ## 查看当前光标下的高亮组
 需要C语言的编译环境，如果没有可以使用以下命令临时安装
 ```bash
-nix shell -p gcc gnumake binutils
+nix-shell -p gcc gnumake binutils
 ```
 Vim安装`nvim-treesitter`
 ```lua
