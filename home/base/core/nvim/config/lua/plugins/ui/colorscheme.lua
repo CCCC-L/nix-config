@@ -5,6 +5,7 @@ return {
 
   config = function()
     require("catppuccin").setup({
+    flavour = "latte",
       -- 背景透明
       transparent_background = true,
       term_colors = true,

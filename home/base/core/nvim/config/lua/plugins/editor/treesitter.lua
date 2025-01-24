@@ -1,14 +1,14 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  opts = {
-    -- 安装的高亮支持来源
-    ensure_installed = {
-      "lua",
-      "nix",
-      "bash",
-    },
+  
+  event = { "VeryLazy" },
+  lazy = vim.fn.argc(-1) == 0,
+  init = function(plugin)
+    require("lazy.core.loader").add_to_rtp(plugin)
+    require("nvim-treesitter.query_predicates")
+  end,
 
+  opts = {
     highlight = { enable = true },
     indent = { enable = true },
 
@@ -28,5 +28,9 @@ return {
         foldenable = false,
       }
     },
-  }
+  },
+
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }

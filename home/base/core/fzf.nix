@@ -3,7 +3,6 @@
     enable = true;
     colors = {
       "bg+" = "#ccd0da";
-      bg = "#ffffff";
       spinner = "#dc8a78";
       hl = "#d20f39";
       fg = "#4c4f69";
@@ -13,9 +12,8 @@
       marker = "#7287fd";
       "fg+" = "#4c4f69";
       prompt = "#8839ef";
-      "hl+" = "#d20f39o";
+      "hl+" = "#d20f39";
       selected-bg = "#bcc0cc";
-      gutter = "#ffffff";
     };
     
   };
