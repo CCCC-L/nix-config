@@ -14,12 +14,12 @@ vim.g.config_utils = {
 
 -- 懒加载keymap和autocmds
 vim.api.nvim_create_autocmd("User", {
-	pattern = "VeryLazy",
-	callback = function()
-		require("config.autocmds")
-		require("config.keymaps")
+  pattern = "VeryLazy",
+  callback = function()
+    require("config.autocmds")
+    require("config.keymaps")
 
     -- 在options设置会被ftplugin 插件中的设置替换掉
     vim.opt.formatoptions:remove({ "c", "r", "o" })
-	end,
+  end,
 })

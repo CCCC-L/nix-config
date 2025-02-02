@@ -6,12 +6,16 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+local event = require("lazy.core.handler.event")
+event.mappings.LazyFile = { id = "LazyFile", event = { "BufReadPost", "BufNewFile", "BufWritePre" } }
+event.mappings["User LazyFile"] = event.mappings.LazyFile
+
 -- 配置Lazy.nvim
 require("lazy").setup({
   spec = { { import = "plugins" }, },
   -- defaults = { lazy = true, version = false },  -- 始终使用最新的 commit
-  checker = { enabled = true },  -- 自动更新插件
-  git = { url_format = "https://mirror.ghproxy.com/https://github.com/%s.git"}, 
+  checker = { enabled = true }, -- 自动更新插件
+  git = { url_format = "https://mirror.ghproxy.com/https://github.com/%s.git" },
   change_detection = {
     enabled = false,
     notify = false,
@@ -30,5 +34,3 @@ require("lazy").setup({
     }
   }
 })
-
-

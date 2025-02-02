@@ -1,8 +1,36 @@
 return {
   "kylechui/nvim-surround",
   event = "VeryLazy",
-  config = function()
-    require("nvim-surround").setup({
-    })
-  end
+  opts = {
+    surrounds = {
+      ["("] = {
+        add = { "(", ")" },
+        find = function()
+          return M.get_selection({ motion = "a(" })
+        end,
+        delete = "^(. ?)().-( ?.)()$",
+      },
+      ["{"] = {
+        add = { "{", "}" },
+        find = function()
+          return M.get_selection({ motion = "a{" })
+        end,
+        delete = "^(. ?)().-( ?.)()$",
+      },
+      ["<"] = {
+        add = { "<", ">" },
+        find = function()
+          return M.get_selection({ motion = "a<" })
+        end,
+        delete = "^(. ?)().-( ?.)()$",
+      },
+      ["["] = {
+        add = { "[", "]" },
+        find = function()
+          return M.get_selection({ motion = "a[" })
+        end,
+        delete = "^(. ?)().-( ?.)()$",
+      },
+    },
+  },
 }
