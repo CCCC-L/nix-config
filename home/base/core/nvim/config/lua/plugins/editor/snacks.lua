@@ -52,20 +52,62 @@ return {
       end,
       desc = "Find Class",
     },
-
     {
-      "<leader>fgf",
+      "<leader>fv",
       function()
         Snacks.picker.git_files()
       end,
       desc = "Find Git Files",
     },
+
     {
-      "<leader>fgb",
+      "<leader>vw",
       function()
-        Snacks.picker.git_files()
+        Snacks.lazygit.open()
       end,
-      desc = "Find Git Brim",
+      desc = "Open LazyGit",
+    },
+    {
+      "<leader>vb",
+      function()
+        Snacks.picker.git_branches()
+      end,
+      desc = "Git Branches",
+    },
+    {
+      "<leader>vh",
+      function()
+        Snacks.picker.git_stash()
+      end,
+      desc = "Git Stash",
+    },
+    {
+      "<leader>vs",
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = "Find Git Status",
+    },
+    {
+      "<leader>vl",
+      function()
+        Snacks.picker.git_log()
+      end,
+      desc = "Git Log",
+    },
+    {
+      "<leader>vf",
+      function()
+        Snacks.picker.git_log_file()
+      end,
+      desc = "File Git Log",
+    },
+    {
+      "<leader>vc",
+      function()
+        Snacks.picker.git_log_line()
+      end,
+      desc = "Line Git Log",
     },
   },
   opts = {

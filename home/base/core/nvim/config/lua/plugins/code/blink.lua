@@ -6,6 +6,25 @@ return {
   opts = {
     keymap = {
       preset = "enter",
+      ["<C-k>"] = { "select_prev", "fallback" },
+      ["<C-j>"] = { "select_next", "fallback" },
+      ["<C-p>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-n>"] = { "scroll_documentation_down", "fallback" },
+      cmdline = {
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-p>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-n>"] = { "scroll_documentation_down", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<Space>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            end
+          end,
+          "fallback",
+        },
+      },
     },
     completion = {
       keyword = { range = "full" },
